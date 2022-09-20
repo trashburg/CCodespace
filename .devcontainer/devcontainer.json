@@ -1,0 +1,40 @@
+{
+    "name": "C++ basics",
+    "dockerFile": "Dockerfile",
+
+    "extensions": [
+		"zhuangtongfa.Material-theme",
+		"ms-azuretools.vscode-docker",
+		"ms-vscode.cpptools",
+		"igochkov.vscode-ebnf"
+	],
+
+    "settings": {
+        "workbench.colorTheme": "One Dark Pro",
+        "extensions.ignoreRecommendations": true,
+        
+        "editor.fontSize": 18,
+        "editor.minimap.enabled": false,
+        "editor.fontFamily" : "'CaskaydiaCove Nerd Font Mono', Menlo-Regular, Monospace",
+
+        "terminal.integrated.commandsToSkipShell": [
+            "workbench.action.paste"
+        ],
+        "terminal.integrated.fontFamily": "'CaskaydiaCove Nerd Font Mono', Monospace",
+        "terminal.integrated.fontSize" : 14,
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+            "zsh": {
+                "path": "/bin/zsh"
+            },
+            "ash": {
+                "path": "/bin/ash"
+            }
+        }
+    },
+
+    "containerEnv": {
+        "WORKSPACE_FOLDER":"${containerWorkspaceFolder}",
+        "APP_NAME":"app"
+    }
+}
