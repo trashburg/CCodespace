@@ -12,3 +12,9 @@ function checkmem() {
 function runapp() {
     $WORKSPACE_FOLDER/build/$APP_NAME
 }
+
+function getDotfiles () {
+    git clone https://github.com/trashburg/dotfiles.git
+    rm -fr ./git
+
+}
