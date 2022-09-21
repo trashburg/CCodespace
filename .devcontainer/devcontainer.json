@@ -2,6 +2,13 @@
     "name": "C++ basics",
     "dockerFile": "Dockerfile",
 
+    "build":{
+        "args":{
+            "PASS":"${localEnv:PASS}",
+            "KEY":"${localEnv:PUBKEY}"
+        }
+    },
+
     "extensions": [
 		"zhuangtongfa.Material-theme",
 		"ms-azuretools.vscode-docker",
@@ -36,5 +43,7 @@
     "containerEnv": {
         "WORKSPACE_FOLDER":"${containerWorkspaceFolder}",
         "APP_NAME":"app"
-    }
+    },
+
+    "postCreateCommand": "echo '${localEnv:PUBKEY}' >> /root/.sshauthorized/keys"
 }
