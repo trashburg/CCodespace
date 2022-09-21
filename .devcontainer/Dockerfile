@@ -1,16 +1,16 @@
-FROM alpine as jumpbox
+FROM alpine
 
-WORKDIR /home/
+RUN apk update && apk add --no-cache \
+    sudo zsh starship docker curl git 
+    
+    # clang clang-dev make gcc gdb libc-dev linux-headers valgrind 
 
-COPY . .
+# RUN echo "root:${PASS}!" | chpasswd
 
-RUN apk update && apk add --no-cache zsh curl git clang clang-dev gcc g++ gdb \
-                                     libc-dev linux-headers valgrind catch2 &&\
-    echo "alias ls='ls --color=auto'" >> /root/.profile &&\
-    echo "alias ll='ls -alF'" >> /root/.profile &&\
-    echo "alias la='ls -alF'" >> /root/.profile
+# RUN addgroup -S appgroup && adduser -s /bin/zsh -SH user -G appgroup &&\
+#     git clone https://github.com/trashburg/dotfiles.git /home/user
 
-RUN sh -c  "$(curl -fsSL https://get.docker.com | bash)" &&\
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" &&\
-    cp .zshrc /root &&\
-    cp zcommands.sh /root/.oh-my-zsh
+# USER user
+
+# COPY ./.zshrc /root
+# COPY ./zcommands.sh /home/user
